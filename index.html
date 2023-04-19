@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <title>大屏可视化</title>
+    <script>
+      const clientWidth = document.documentElement.clientWidth;
+      const clientHeight = document.documentElement.clientWidth;
+      window.pageWidth =
+        clientWidth / clientHeight > 16 / 9
+          ? clientHeight * (16 / 9)
+          : clientWidth;
+      // if (clientWidth / clientHeight > 16 / 9) {
+      //   pageWidth = clientHeight * (16 / 9);
+      // } else {
+      //   pageWidth = clientWidth;
+      // }
+      const pageHeight = pageWidth / (16 / 9);
+      //1rem等于页面的宽度除以100
+      const string = `<style>html{
+        font-size:${pageWidth / 100}px
+      }</style>`;
+      document.write(string);
+    </script>
+  <script type="module" crossorigin src="/assets/index.7a9def4a.js"></script>
+  <link rel="modulepreload" href="/assets/vendor.eb0bddce.js">
+  <link rel="stylesheet" href="/assets/index.e84b970a.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script>
+      //直接访问root const root= document.querySelector('#root')
+      // root.style.width = pageWidth + "px";
+      root.style.height = pageHeight + "px";
+      root.style.marginTop = (clientHeight - pageHeight) / 2 + "px"; //响应式页面下上下居中
+    </script>
+    
+  </body>
+</html>
